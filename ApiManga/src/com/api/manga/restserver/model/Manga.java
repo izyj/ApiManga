@@ -1,7 +1,10 @@
-package com.api.manga.restserver.entities;
+package com.api.manga.restserver.model;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
+import com.api.manga.restserver.keys.DataKeys;
+import com.google.gson.annotations.SerializedName;
 
 public class Manga {
 	

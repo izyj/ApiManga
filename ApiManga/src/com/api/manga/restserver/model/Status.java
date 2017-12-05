@@ -1,4 +1,4 @@
-package com.api.manga.restserver.entities;
+package com.api.manga.restserver.model;
 
 public class Status {
 	

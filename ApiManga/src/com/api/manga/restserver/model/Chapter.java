@@ -1,19 +1,19 @@
-package com.api.manga.restserver.entities;
+package com.api.manga.restserver.model;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class Chapitre {
+public class Chapter {
 	
 	private int id, idManga;
 	private Timestamp lastUpdate;
-	private ArrayList<Chapitre> chapters;
+	private ArrayList<Chapter> chapters;
 	
-	public Chapitre() {
+	public Chapter() {
 		
 	}
 	
-	public Chapitre(int id,int idManga,Timestamp lastupdate, ArrayList chapters) {
+	public Chapter(int id,int idManga,Timestamp lastupdate, ArrayList chapters) {
 		this.id = id;
 		this.idManga =idManga;
 		this.lastUpdate = lastupdate;
@@ -46,10 +46,10 @@ public class Chapitre {
 		this.lastUpdate = lastUpdate;
 	}
 	
-	public ArrayList<Chapitre> getChapters() {
+	public ArrayList<Chapter> getChapters() {
 		return chapters;
 	}
-	public void setChapters(ArrayList<Chapitre> chapters) {
+	public void setChapters(ArrayList<Chapter> chapters) {
 		this.chapters = chapters;
 	}
 
