@@ -72,7 +72,7 @@ public class MangaEdenDispatcher implements JsonDataDispatcher{
 				    					break;
 				    					
 				    				case DataKeys.mangaEdenJson_mangaID : 
-				    					manga.setId(Integer.parseInt(jsP.toString()));
+				    					manga.setIdApi(jsP.toString());
 				    					break;
 				    					
 				    				

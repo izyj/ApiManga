@@ -45,8 +45,24 @@ public class MedenCaller implements IConnectorAPIMangaEden  {
 
 	@Override
 	public Manga getManga(String idManga) {
-		// TODO Auto-generated method stub
-		return null;
+		Manga manga = new Manga();
+		String uri = MangaEdenKeys.mangaEdenApiMangaURI.toString()+idManga+"/";
+		CookieHandler.setDefault(new CookieManager());
+		ObjectMapper objectMapper = new ObjectMapper();
+		LinkedList<Manga> listMangas;
+		String json = new String() ;
+		try {
+			json  = MethodGetHTTP(uri);		
+		} catch (IOException e) {
+			
+			System.out.println("Erreur : "+ e);
+		}
+		
+		dispatcher = new MangaEdenDispatcher();
+		listMangas = dispatcher.dispatch(json);
+		
+		
+		return listMangas.getFirst();
 	}
 
 	@Override
@@ -66,12 +82,7 @@ public class MedenCaller implements IConnectorAPIMangaEden  {
 		}
 		 dispatcher = new MangaEdenDispatcher();
 		 listMangas = dispatcher.dispatch(json);
-		 
-		
 
-		
-		
-		
 		return listMangas;
 	}
 
