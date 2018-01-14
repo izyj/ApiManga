@@ -8,26 +8,16 @@ import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Consumer;
 
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
 
 import com.api.manga.data.dispatcher.MangaEdenDispatcher;
 import com.api.manga.restserver.interfaceSample.IConnectorAPIMangaEden;
 import com.api.manga.restserver.interfaceSample.JsonDataDispatcher;
 import com.api.manga.restserver.keys.MangaEdenKeys;
-import com.api.manga.restserver.keys.DataKeys;
 import com.api.manga.restserver.model.Chapter;
 import com.api.manga.restserver.model.Manga;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 
 
