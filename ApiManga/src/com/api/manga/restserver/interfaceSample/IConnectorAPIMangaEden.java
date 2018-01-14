@@ -1,7 +1,8 @@
-package com.api.manga.restserver.connector;
+package com.api.manga.restserver.interfaceSample;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import com.api.manga.restserver.model.Chapter;
 import com.api.manga.restserver.model.Manga;
@@ -24,7 +25,7 @@ public interface IConnectorAPIMangaEden {
 	 * Retourne la liste des mangas
 	 * @return
 	 */
-	public ArrayList<Manga> getMangaList(String language);
+	public LinkedList<Manga> getMangaList(String language);
 	
 	
 	/**

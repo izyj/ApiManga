@@ -10,14 +10,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
-import com.api.manga.restserver.connector.IConnectorAPIMangaEden;
-import com.api.manga.restserver.keys.DKeys;
+import com.api.manga.data.dispatcher.MangaEdenDispatcher;
+import com.api.manga.restserver.interfaceSample.IConnectorAPIMangaEden;
+import com.api.manga.restserver.interfaceSample.JsonDataDispatcher;
+import com.api.manga.restserver.keys.MangaEdenKeys;
 import com.api.manga.restserver.keys.DataKeys;
 import com.api.manga.restserver.model.Chapter;
 import com.api.manga.restserver.model.Manga;
@@ -32,6 +35,7 @@ import com.google.gson.JsonParser;
 public class MedenCaller implements IConnectorAPIMangaEden  {
 	
 
+	private JsonDataDispatcher dispatcher;
 
 	public MedenCaller() {
 		
@@ -46,13 +50,13 @@ public class MedenCaller implements IConnectorAPIMangaEden  {
 	}
 
 	@Override
-	public ArrayList<Manga> getMangaList(String language) {
+	public LinkedList<Manga> getMangaList(String language) {
 					
-		String uri = DKeys.mangaEdenApiMangaListURI+language+"/"
-		+DataKeys.mangaEdenApiMangaListURISplitPage+"1";
+		String uri = MangaEdenKeys.mangaEdenApiMangaListURI.toString()+language
+		+MangaEdenKeys.mangaEdenApiMangaListURISplitPage.toString()+"1";
 		CookieHandler.setDefault(new CookieManager());
 		ObjectMapper objectMapper = new ObjectMapper();
-		List<Manga> listMangas = new ArrayList<Manga>();
+		LinkedList<Manga> listMangas;
 		String json = new String() ;
 		try {
 			json  = MethodGetHTTP(uri);		
@@ -60,39 +64,15 @@ public class MedenCaller implements IConnectorAPIMangaEden  {
 			
 			System.out.println("Erreur : "+ e);
 		}
-		JsonParser parser = new JsonParser();
-		JsonElement jsonTree = parser.parse(json);
-		if(jsonTree.isJsonObject()) {
-		    JsonObject jsonObject = jsonTree.getAsJsonObject();
-		    JsonElement listMangaJson  = jsonObject.get(DataKeys.mangaEdenJson_manga);
-		    
-		    
-		    if(listMangaJson.isJsonObject()) {
-			    JsonObject listMangaJsonObject = listMangaJson.getAsJsonObject();
-			    
-		    }else if(listMangaJson.isJsonArray()) {
-		    	
-		    	Consumer<? super JsonElement> consumerNames = new Consumer<JsonArray>() {
-					@Override
-					public void accept(JsonArray t) {
-						
-						t.
-						
-					}
-		    	};
-		    	
-		    	JsonArray listMangaJsonArray = listMangaJson.getAsJsonArray();
-		    	
-		    	listMangaJsonArray.forEach(consumerNames);
-		    	
-		    }
-		    
-		}
+		 dispatcher = new MangaEdenDispatcher();
+		 listMangas = dispatcher.dispatch(json);
+		 
+		
 
 		
 		
 		
-		return (ArrayList<Manga>) listMangas;
+		return listMangas;
 	}
 
 	@Override

@@ -1,11 +1,11 @@
 package com.api.manga.restserver.keys;
 
-public enum DKeys {
+public enum MangaEdenKeys {
 	
 	mangaEdenApiMangaListURI("https://www.mangaeden.com/api/list/"),
 	mangaEdenApiMangaListURISplitPage("/?p="),
-	mangaEden_Language_English("0/"),
-	mangaEden_Language_Italian("1/"),
+	mangaEden_Language_English("0"),
+	mangaEden_Language_Italian("1"),
 	mangaEdenApiMangaURI("https://www.mangaeden.com/api/manga/"),
 	mangaEdenApiChapterURI("https://www.mangaeden.com/api/chapter/"),
 	mangaEdenJson_mangaName("a"),
@@ -22,10 +22,19 @@ public enum DKeys {
 		
 	private String info ="";
 	
-	DKeys(String infos){
+	 MangaEdenKeys(String infos){
 		
 		this.info = infos;
 	}
+	 
+	 @Override
+	public String toString() {
+
+		return  info;
+	}
+	 
+	 
+	
 	
 
 

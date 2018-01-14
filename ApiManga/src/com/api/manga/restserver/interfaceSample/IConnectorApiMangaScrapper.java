@@ -1,4 +1,4 @@
-package com.api.manga.restserver.connector;
+package com.api.manga.restserver.interfaceSample;
 
 import java.util.ArrayList;
 import java.util.HashMap;
