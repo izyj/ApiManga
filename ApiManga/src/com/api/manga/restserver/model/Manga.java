@@ -7,8 +7,8 @@ import com.api.manga.restserver.keys.DataKeys;
 import com.google.gson.annotations.SerializedName;
 
 public class Manga {
-	
 	private int id;
+	private String idApi;
 	private String name;
 	private Timestamp yearRelease;
 	private String infos;
@@ -116,6 +116,14 @@ public class Manga {
 
 	public void setGenres(ArrayList<Genre> genres) {
 		this.genres = genres;
+	}
+
+	public String getIdApi() {
+		return idApi;
+	}
+
+	public void setIdApi(String idApi) {
+		this.idApi = idApi;
 	}
 
 
