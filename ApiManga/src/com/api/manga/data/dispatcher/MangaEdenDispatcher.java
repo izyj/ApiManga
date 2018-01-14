@@ -51,50 +51,60 @@ public class MangaEdenDispatcher implements JsonDataDispatcher{
 			    		Set<String> keys = jsonObjectTemp.keySet();
 			    		Manga manga = new Manga();
 			    		for( String k : keys) {
-			    			JsonPrimitive jsP = jsonObjectTemp.getAsJsonPrimitive(k);
 			    			
-			    			switch(jsP.getAsString()) 
-			    			{
-			    			
-			    				case DataKeys.mangaEdenJson_mangaName  :
-			    					manga.setName(k);
-			    					break;
-			    					
-			    				case DataKeys.mangaEdenJson_mangaStatus :
-			    					Status s = new Status();
-			    					s.setName(k);
-			    					manga.setStatus(s);
-			    					break;
-			    					
-			    				case DataKeys.mangaEdenJson_mangaID : 
-			    					manga.setId(Integer.parseInt(k));
-			    					break;
-			    					
-			    				case DataKeys.mangaEdenJson_mangaCategory : 
-			    					ArrayList<Genre> genres = new ArrayList<>();
-			    					JsonArray jsO = jsonObjectTemp.get(k).getAsJsonArray();
-			    					int  size = jsO.size();
-			    					for(int i=0; i< size; i++) {
-			    						Genre g = new Genre();
-			    						g.setName(jsO.get(i).toString());
-			    						genres.add(g);
-			    					}
-			    					manga.setGenres(genres);
-			    					break;
-			    					
-			    				case DataKeys.mangaEdenJson_mangaLastChapterDate :
-			    					//manga.setLastUpdate(lastUpdate);
-			    					break;
-			    					
-			    				case DataKeys.mangaEdenJson_mangaImage : 
-			    					Image image = new Image();
-			    					image.setURI(k);
-			    					manga.setImage(image);
-			    					break;
-			    					
-			    					
+			    			if (jsonObjectTemp.get(k).isJsonPrimitive()) {
+			    				
+			    				
+				    			JsonPrimitive jsP = jsonObjectTemp.getAsJsonPrimitive(k);
+				    			String f = jsP.toString();
+				    			String f2 = jsP.getAsString();
+				    			switch(k) 
+				    			{
+				    			
+				    				case DataKeys.mangaEdenJson_mangaName  :
+				    					manga.setName(jsP.toString());
+				    					break;
+				    					
+				    				case DataKeys.mangaEdenJson_mangaStatus :
+				    					Status s = new Status();
+				    					s.setName(jsP.toString());
+				    					manga.setStatus(s);
+				    					break;
+				    					
+				    				case DataKeys.mangaEdenJson_mangaID : 
+				    					manga.setId(Integer.parseInt(jsP.toString()));
+				    					break;
+				    					
+				    				
+				    					
+				    				case DataKeys.mangaEdenJson_mangaLastChapterDate :
+				    					//manga.setLastUpdate(lastUpdate);
+				    					break;
+				    					
+				    				case DataKeys.mangaEdenJson_mangaImage : 
+				    					Image image = new Image();
+				    					image.setURI(jsP.toString());
+				    					manga.setImage(image);
+				    					break;
+				    					
+				    					
+				    			}
 			    			}
+			    			else if (jsonObjectTemp.get(k).isJsonArray()) {
+			    				
 			    			
+			    				 
+		    					ArrayList<Genre> genres = new ArrayList<>();
+		    					JsonArray jsO = jsonObjectTemp.get(k).getAsJsonArray();
+		    					int  size = jsO.size();
+		    					for(int i=0; i< size; i++) {
+		    						Genre g = new Genre();
+		    						g.setName(jsO.get(i).toString());
+		    						genres.add(g);
+		    					}
+		    					manga.setGenres(genres);
+		    					break;
+			    			}
 			    			
 			    		}
 			    		
