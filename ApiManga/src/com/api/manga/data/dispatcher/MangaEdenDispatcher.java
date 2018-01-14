@@ -114,23 +114,12 @@ public class MangaEdenDispatcher implements JsonDataDispatcher{
 		    	}
 		    
 		}
-		return null;
+		return listManga;
 		
 	}
 	
 	
-	 /**
-	 *  Designe l'attribut auquel correspond la donnée récupérer
-	 * @param item
-	 */
-	private void attribute(MangaEdenKeys key) {
-		
-		
-		
-		
-		
-		
-	}
+
 	
 
 	
