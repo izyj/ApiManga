@@ -2,7 +2,7 @@ package com.api.manga.restserver.Factory;
 
 
 import com.api.manga.restserver.call.api.MedenCaller;
-import com.api.manga.restserver.connector.IConnectorAPIMangaEden;
+import com.api.manga.restserver.interfaceSample.IConnectorAPIMangaEden;
 
 public class ApiConnectorFactory {
 	
