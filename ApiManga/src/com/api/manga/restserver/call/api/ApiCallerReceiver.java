@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-import com.api.manga.data.dispatcher.MangaEdenDispatcher;
+import com.api.manga.data.dispatcher.Dispatcher;
 import com.api.manga.restserver.interfaceSample.IConnectorAPIMangaEden;
 import com.api.manga.restserver.interfaceSample.JsonDataDispatcher;
 import com.api.manga.restserver.keys.MangaEdenKeys;
@@ -21,13 +21,18 @@ import com.api.manga.restserver.model.Manga;
 
 
 
-
-public class MedenCaller implements IConnectorAPIMangaEden  {
+/**
+ * Classe permettant de requeter les différentes API distante, de recupérer les informations et de 
+ * les traités
+ * @author isiramen
+ *
+ */
+public class ApiCallerReceiver implements IConnectorAPIMangaEden  {
 	
 
 	private JsonDataDispatcher dispatcher;
 
-	public MedenCaller() {
+	public ApiCallerReceiver() {
 		
 		
 	
@@ -48,7 +53,7 @@ public class MedenCaller implements IConnectorAPIMangaEden  {
 			System.out.println("Erreur : "+ e);
 		}
 		
-		dispatcher = new MangaEdenDispatcher();
+		dispatcher = new Dispatcher();
 		listMangas = dispatcher.dispatch(json);
 		
 		
@@ -61,7 +66,6 @@ public class MedenCaller implements IConnectorAPIMangaEden  {
 		String uri = MangaEdenKeys.mangaEdenApiMangaListURI.toString()+language
 		+MangaEdenKeys.mangaEdenApiMangaListURISplitPage.toString()+"1";
 		CookieHandler.setDefault(new CookieManager());
-		ObjectMapper objectMapper = new ObjectMapper();
 		LinkedList<Manga> listMangas;
 		String json = new String() ;
 		try {
@@ -70,7 +74,7 @@ public class MedenCaller implements IConnectorAPIMangaEden  {
 			
 			System.out.println("Erreur : "+ e);
 		}
-		 dispatcher = new MangaEdenDispatcher();
+		 dispatcher = new Dispatcher();
 		 listMangas = dispatcher.dispatch(json);
 
 		return listMangas;

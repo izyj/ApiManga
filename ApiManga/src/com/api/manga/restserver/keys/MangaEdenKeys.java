@@ -2,6 +2,7 @@ package com.api.manga.restserver.keys;
 
 public enum MangaEdenKeys {
 	
+	mangaEdenSourceName("MangaEden"),
 	mangaEdenApiMangaListURI("https://www.mangaeden.com/api/list/"),
 	mangaEdenApiMangaListURISplitPage("/?p="),
 	mangaEden_Language_English("0"),
