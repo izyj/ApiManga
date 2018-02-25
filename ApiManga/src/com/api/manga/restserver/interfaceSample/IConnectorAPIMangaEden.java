@@ -1,12 +1,9 @@
 package com.api.manga.restserver.interfaceSample;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 import com.api.manga.restserver.model.Chapter;
 import com.api.manga.restserver.model.Manga;
-import com.api.manga.restserver.model.Site;
 
 /**
  * @author isiramen

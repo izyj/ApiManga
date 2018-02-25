@@ -15,6 +15,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import com.api.manga.data.dispatcher.Dispatcher;
 import com.api.manga.restserver.interfaceSample.IConnectorAPIMangaEden;
 import com.api.manga.restserver.interfaceSample.JsonDataDispatcher;
+import com.api.manga.restserver.keys.FunctionList;
 import com.api.manga.restserver.keys.MangaEdenKeys;
 import com.api.manga.restserver.model.Chapter;
 import com.api.manga.restserver.model.Manga;
@@ -47,14 +48,15 @@ public class ApiCallerReceiver implements IConnectorAPIMangaEden  {
 		LinkedList<Manga> listMangas;
 		String json = new String() ;
 		try {
-			json  = MethodGetHTTP(uri);		
+			json  = methodGetHTTP(uri);		
 		} catch (IOException e) {
 			
 			System.out.println("Erreur : "+ e);
 		}
 		
 		dispatcher = new Dispatcher();
-		listMangas = dispatcher.dispatch(json);
+		listMangas = (LinkedList<Manga>) dispatcher.dispatch(json,MangaEdenKeys.mangaEdenSourceName.toString()
+				 ,FunctionList.mangaEdenSourceGetManga.toString());
 		
 		
 		return listMangas.getFirst();
@@ -69,13 +71,14 @@ public class ApiCallerReceiver implements IConnectorAPIMangaEden  {
 		LinkedList<Manga> listMangas;
 		String json = new String() ;
 		try {
-			json  = MethodGetHTTP(uri);		
+			json  = methodGetHTTP(uri);		
 		} catch (IOException e) {
 			
 			System.out.println("Erreur : "+ e);
 		}
 		 dispatcher = new Dispatcher();
-		 listMangas = dispatcher.dispatch(json);
+		 listMangas = (LinkedList<Manga>) dispatcher.dispatch(json,MangaEdenKeys.mangaEdenSourceName.toString()
+				 ,FunctionList.mangaEdenSourceGetListManga.toString());
 
 		return listMangas;
 	}
@@ -99,7 +102,7 @@ public class ApiCallerReceiver implements IConnectorAPIMangaEden  {
 	}
 	
 	
-	private static String MethodGetHTTP(String uri) throws IOException {
+	private static String methodGetHTTP(String uri) throws IOException {
 		
 		String line;
 		int responseCode;
@@ -130,7 +133,7 @@ public class ApiCallerReceiver implements IConnectorAPIMangaEden  {
 				break;
 			case HttpURLConnection.HTTP_MOVED_PERM :
 				String uriMovedTo = con.getHeaderField("Location");
-				builder.append(MethodGetHTTP(uriMovedTo));
+				builder.append(methodGetHTTP(uriMovedTo));
 				
 				break;
 				

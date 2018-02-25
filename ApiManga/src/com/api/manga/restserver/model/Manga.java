@@ -17,6 +17,7 @@ public class Manga {
 	private Artist artist;
 	private Author author;
 	private Status status;
+	private String description;
 	private ArrayList<Genre> genres;
 	
 	public Manga() {
@@ -126,7 +127,15 @@ public class Manga {
 		this.idApi = idApi;
 	}
 
+	public String getDescription() {
+		return description;
+	}
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	
 
 
 	
