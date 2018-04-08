@@ -3,9 +3,11 @@ package com.api.manga.call.function;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import com.api.manga.restserver.interfaceSample.IApiFunctionList;
 import com.api.manga.restserver.keys.DataKeys;
+import com.api.manga.restserver.keys.MangaEdenKeys;
 import com.api.manga.restserver.model.Genre;
 import com.api.manga.restserver.model.Image;
 import com.api.manga.restserver.model.Manga;
@@ -24,16 +26,15 @@ public class MangaEdenGetListManga implements IApiFunctionList<Manga> {
 		JsonElement jsonTree = parser.parse(json);
 		JsonObject jsonObjectTemp;
 		LinkedList<Manga> listManga = new LinkedList<>();
-		
+				
 		
 		if(jsonTree.isJsonObject()) {
 		    JsonObject jsonObject = jsonTree.getAsJsonObject();
-		    JsonElement listMangaJson  = jsonObject.get(DataKeys.mangaEdenJson_manga);
+		    JsonElement listMangaJson  = jsonObject.get(MangaEdenKeys.mangaEdenJson_manga.toString());
 		    
 		    	if(listMangaJson.isJsonArray()) {
 
 			    	JsonArray listMangaJsonArray = listMangaJson.getAsJsonArray();
-			    	
 			    	for(JsonElement  item :  listMangaJsonArray){
 			    		
 			    		jsonObjectTemp = item.getAsJsonObject();
@@ -107,3 +108,4 @@ public class MangaEdenGetListManga implements IApiFunctionList<Manga> {
 	}
 
 }
+

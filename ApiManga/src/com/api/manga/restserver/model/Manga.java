@@ -14,10 +14,13 @@ public class Manga {
 	private String infos;
 	private Timestamp lastUpdate;
 	private Image image;
+	private Image imageURL;
 	private Artist artist;
 	private Author author;
 	private Status status;
 	private String description;
+	private String chapterLength;
+	private String language;
 	private ArrayList<Genre> genres;
 	
 	public Manga() {
@@ -37,6 +40,32 @@ public class Manga {
 		this.author = author;
 		this.status = status;
 		
+	}
+	
+	
+	
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public Image getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(Image imageURL) {
+		this.imageURL = imageURL;
+	}
+
+	public String getChapterLength() {
+		return chapterLength;
+	}
+
+	public void setChapterLength(String chapterLength) {
+		this.chapterLength = chapterLength;
 	}
 
 	public int getId() {

@@ -5,8 +5,9 @@ import java.util.ArrayList;
 
 public class Chapter {
 	
-	private String id, idManga;
+	private String id, idManga,number,title;
 	private Timestamp lastUpdate;
+	
 	
 	public Chapter() {
 		
@@ -17,6 +18,24 @@ public class Chapter {
 		this.idManga =idManga;
 		this.lastUpdate = lastupdate;
 			
+	}
+	
+	
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getId() {
