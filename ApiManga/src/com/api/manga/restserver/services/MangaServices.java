@@ -38,6 +38,4 @@ public class MangaServices {
 	
 
 }
-410-+
-.
-!:;,nbvcxwcg
+
