@@ -20,6 +20,11 @@ public class Chapter {
 			
 	}
 	
+	public Chapter(String id) {
+		this.id = id;
+			
+	}
+	
 	
 
 	public String getNumber() {

@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Page {
 	
-	private int id,chapId;
+	private String id,chapId;
 	private String numPage;
 	private Image image;
 	
@@ -21,7 +21,7 @@ public class Page {
 	 * @param chapId
 	 * @param numPage
 	 */
-	public Page(int id,int chapId, String numPage,Image image) {
+	public Page(String id,String chapId, String numPage,Image image) {
 		
 		this.id = id;
 		this.chapId = chapId;
@@ -29,20 +29,24 @@ public class Page {
 		this.image = image;
 		
 	}
+	public Page(String id) {
+		
+		this.id =  id;
+	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getChapId() {
+	public String getChapId() {
 		return chapId;
 	}
 
-	public void setChapId(int chapId) {
+	public void setChapId(String chapId) {
 		this.chapId = chapId;
 	}
 
