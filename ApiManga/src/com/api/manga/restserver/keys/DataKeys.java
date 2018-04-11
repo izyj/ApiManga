@@ -29,7 +29,7 @@ public class DataKeys {
 	public final static String mangaEdenJson_long_imageURL ="imageURL";
 	public final static String mangaEdenJson_long_language ="language";
 	public final static String mangaEdenJson_long_relased ="released";
-	public final static String mangaEdenJson_long_images ="released";
+	public final static String mangaEdenJson_long_images ="images";
 
 
 	
