@@ -5,36 +5,52 @@ import java.util.ArrayList;
 
 public class Chapter {
 	
-	private int id, idManga;
+	private String id, idManga,number,title;
 	private Timestamp lastUpdate;
-	private ArrayList<Chapter> chapters;
+	
 	
 	public Chapter() {
 		
 	}
 	
-	public Chapter(int id,int idManga,Timestamp lastupdate, ArrayList chapters) {
+	public Chapter(String id,String idManga,Timestamp lastupdate) {
 		this.id = id;
 		this.idManga =idManga;
 		this.lastUpdate = lastupdate;
-		this.chapters = chapters;
-
 			
 	}
+	
+	
 
-	public int getId() {
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getIdManga() {
+	public String getIdManga() {
 		return idManga;
 	}
 
-	public void setIdManga(int idManga) {
+	public void setIdManga(String idManga) {
 		this.idManga = idManga;
 	}
 
@@ -45,13 +61,7 @@ public class Chapter {
 	public void setLastUpdate(Timestamp lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-	
-	public ArrayList<Chapter> getChapters() {
-		return chapters;
-	}
-	public void setChapters(ArrayList<Chapter> chapters) {
-		this.chapters = chapters;
-	}
+
 
 
 		

@@ -17,7 +17,23 @@ public class DataKeys {
 	public final static String mangaEdenJson_mangaStatus ="s";
 	public final static String mangaEdenJson_mangaAlias ="a";
 	public final static String mangaEdenJson_mangaHits ="h";
-	public final static String mangaEdenJson_manga ="manga";
+	public final static String mangaEdenJson_long_mangaTitle ="title";
+	public final static String mangaEdenJson_long_chapters ="chapters";
+	public final static String mangaEdenJson_long_chapters_len ="chapters_len";
+	public final static String mangaEdenJson_long_created ="created";
+	public final static String mangaEdenJson_long_description ="description";
+	public final static String mangaEdenJson_long_hits ="hits";
+	public final static String mangaEdenJson_long_image ="image";
+	public final static String mangaEdenJson_long_last_chapter_date="last_chapter_date";
+	public final static String mangaEdenJson_long_status ="status";
+	public final static String mangaEdenJson_long_imageURL ="imageURL";
+	public final static String mangaEdenJson_long_language ="language";
+	public final static String mangaEdenJson_long_relased ="released";
+
+	
+	
+	
+	
 	
 	
 	
