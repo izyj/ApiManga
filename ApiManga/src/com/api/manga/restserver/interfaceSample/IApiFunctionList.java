@@ -17,4 +17,5 @@ public interface IApiFunctionList<E> {
 	 */
 	public  LinkedList<E> execute(String json);
 
+
 }

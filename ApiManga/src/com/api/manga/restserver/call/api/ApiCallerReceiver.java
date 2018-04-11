@@ -9,6 +9,7 @@ import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.LinkedList;
+import java.util.UUID;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -19,6 +20,7 @@ import com.api.manga.restserver.keys.FunctionList;
 import com.api.manga.restserver.keys.MangaEdenKeys;
 import com.api.manga.restserver.model.Chapter;
 import com.api.manga.restserver.model.Manga;
+import com.api.manga.restserver.model.Page;
 
 
 
@@ -33,11 +35,7 @@ public class ApiCallerReceiver implements IConnectorAPIMangaEden  {
 
 	private JsonDataDispatcher dispatcher;
 
-	public ApiCallerReceiver() {
-		
-		
-	
-	}
+	public ApiCallerReceiver() {}
 
 	@Override
 	public Manga getManga(String idManga) {
@@ -45,21 +43,21 @@ public class ApiCallerReceiver implements IConnectorAPIMangaEden  {
 		String uri = MangaEdenKeys.mangaEdenApiMangaURI.toString()+idManga+"/";
 		CookieHandler.setDefault(new CookieManager());
 		ObjectMapper objectMapper = new ObjectMapper();
-		LinkedList<Manga> listMangas;
-		String json = new String() ;
+		Manga mangas;
+		String mangaJson = new String() ;
 		try {
-			json  = methodGetHTTP(uri);		
+			mangaJson  = methodGetHTTP(uri);		
 		} catch (IOException e) {
 			
-			System.out.println("Erreur : "+ e);
+			System.out.println("Erreur : Erreur durant la récupération du manga depuis l'API MangaEden "+ e);
 		}
 		
 		dispatcher = new Dispatcher();
-		listMangas = (LinkedList<Manga>) dispatcher.dispatch(json,MangaEdenKeys.mangaEdenSourceName.toString()
+		mangas = (Manga) dispatcher.dispatch(mangaJson,MangaEdenKeys.mangaEdenSourceName.toString()
 				 ,FunctionList.mangaEdenSourceGetManga.toString());
 		
 		
-		return listMangas.getFirst();
+		return manga;
 	}
 
 	@Override
@@ -69,15 +67,15 @@ public class ApiCallerReceiver implements IConnectorAPIMangaEden  {
 		+MangaEdenKeys.mangaEdenApiMangaListURISplitPage.toString()+"1";
 		CookieHandler.setDefault(new CookieManager());
 		LinkedList<Manga> listMangas;
-		String json = new String() ;
+		String listMangaJson = new String() ;
 		try {
-			json  = methodGetHTTP(uri);		
+			listMangaJson  = methodGetHTTP(uri);		
 		} catch (IOException e) {
 			
-			System.out.println("Erreur : "+ e);
+			System.out.println("Erreur : Erreur durant la récupération de la liste des mangas depuis l'API MangaEden "+ e);
 		}
 		 dispatcher = new Dispatcher();
-		 listMangas = (LinkedList<Manga>) dispatcher.dispatch(json,MangaEdenKeys.mangaEdenSourceName.toString()
+		 listMangas = (LinkedList<Manga>) dispatcher.dispatch(listMangaJson,MangaEdenKeys.mangaEdenSourceName.toString()
 				 ,FunctionList.mangaEdenSourceGetListManga.toString());
 
 		return listMangas;
@@ -85,8 +83,28 @@ public class ApiCallerReceiver implements IConnectorAPIMangaEden  {
 
 	@Override
 	public Chapter getChapter(String idChapter) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String uri = MangaEdenKeys.mangaEdenApiChapterURI.toString()+idChapter+"/";
+		Chapter chapter = new Chapter();
+		dispatcher = new Dispatcher();
+		String chapterJson = new String();
+		try {
+			
+			chapterJson  = methodGetHTTP(uri);	
+			
+		} catch (IOException e) {
+			
+			System.out.println("Erreur : Erreur durant la récupération du chapitre depuis l'API MangaEden "+ e);
+		}
+		
+		@SuppressWarnings("unchecked")
+		LinkedList<Page> pagelist = (LinkedList<Page>) dispatcher.dispatch(chapterJson,MangaEdenKeys.mangaEdenSourceName.toString()
+				 ,FunctionList.mangaEdenSourceGetListManga.toString());
+		
+		chapter.setId(UUID.randomUUID().toString());
+		chapter.setPage(pagelist);
+		
+		return chapter;
 	}
 
 	@Override

@@ -42,8 +42,10 @@ public class MangaEdenGetChapter implements IApiFunctionList<Page> {
 				if(i == 3) 
 					page.getImage().setHeight(jsE.getAsString());
 					
-				if(i == 4)
+				if(i == 4) {
 					page.getImage().setLength(jsE.getAsString());
+					i=1;
+				}
 				
 				pageList.add(page);
 				i++;

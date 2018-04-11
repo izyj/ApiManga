@@ -3,7 +3,8 @@ package com.api.manga.restserver.keys;
 public enum FunctionList {
 
 	mangaEdenSourceGetManga("GetManga"),
-	mangaEdenSourceGetListManga("GetListManga");
+	mangaEdenSourceGetListManga("GetListManga"),
+	mangaEdenSourceGetChapter("GetChapter");
 	
 	
 	

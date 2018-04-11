@@ -4,10 +4,11 @@ package com.api.manga.restserver.services;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-
+import com.api.manga.restserver.call.api.ApiCallerReceiver;
 import com.api.manga.restserver.keys.DataKeys;
 import com.api.manga.restserver.keys.MangaEdenKeys;
 import com.api.manga.restserver.model.Manga;
@@ -18,15 +19,15 @@ public class MangaServices {
 	@GET
 	@Path("/manga={id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Manga getManga() {
-		Manga manga = new Manga();
-		//MedenCaller m = new MedenCaller();
-		//m.getMangaList(MangaEdenKeys.mangaEden_Language_English.toString());
+	public Manga getManga(@PathParam("id") String idManga) {
+		Manga manga ;
+		ApiCallerReceiver caller = new ApiCallerReceiver();
+		 manga = caller.getManga(idManga);
 		return manga;
 		
 	}
 	
-	@Path("/{id}")
+	@Path("/manga/list/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Manga getMangaList() {
 		Manga manga = new Manga();

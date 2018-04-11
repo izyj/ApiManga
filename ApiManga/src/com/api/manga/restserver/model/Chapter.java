@@ -2,11 +2,13 @@ package com.api.manga.restserver.model;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Chapter {
 	
 	private String id, idManga,number,title;
 	private Timestamp lastUpdate;
+	private LinkedList<Page> page;
 	
 	
 	public Chapter() {
@@ -15,7 +17,7 @@ public class Chapter {
 	
 	public Chapter(String id,String idManga,Timestamp lastupdate) {
 		this.id = id;
-		this.idManga =idManga;
+		this.idManga = idManga;
 		this.lastUpdate = lastupdate;
 			
 	}
@@ -67,8 +69,16 @@ public class Chapter {
 		this.lastUpdate = lastUpdate;
 	}
 
+	public LinkedList<Page> getPage() {
+		return page;
+	}
+
+	public void setPage(LinkedList<Page> page) {
+		this.page = page;
+	}
 
 
+	
 		
 	
 
