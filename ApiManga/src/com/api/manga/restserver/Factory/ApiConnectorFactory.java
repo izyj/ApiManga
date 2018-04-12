@@ -1,13 +1,13 @@
 package com.api.manga.restserver.Factory;
 
 
-import com.api.manga.restserver.call.api.MedenCaller;
+import com.api.manga.restserver.call.api.ApiCallerReceiver;
 import com.api.manga.restserver.interfaceSample.IConnectorAPIMangaEden;
 
 public class ApiConnectorFactory {
 	
 	private static ApiConnectorFactory INSTANCE = new ApiConnectorFactory();
-	
+	private static ApiCallerReceiver serviceCaller = new ApiCallerReceiver();
 	private ApiConnectorFactory() {
 		
 	}
@@ -17,9 +17,9 @@ public class ApiConnectorFactory {
 		return INSTANCE;
 	}
 	
-	public static IConnectorAPIMangaEden getEdenDataConnector() {
+	public static IConnectorAPIMangaEden getApiCallerReceiver() {
 		
-		return new MedenCaller();
+		return serviceCaller;
 	}
 	
 	public static IConnectorAPIMangaEden getScrapperDataConnector() {

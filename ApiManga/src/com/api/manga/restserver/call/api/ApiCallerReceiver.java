@@ -75,6 +75,8 @@ public class ApiCallerReceiver implements IConnectorAPIMangaEden  {
 			System.out.println("Erreur : Erreur durant la récupération de la liste des mangas depuis l'API MangaEden "+ e);
 		}
 		 dispatcher = new Dispatcher();
+		 
+		 
 		 listMangas = (LinkedList<Manga>) dispatcher.dispatch(listMangaJson,MangaEdenKeys.mangaEdenSourceName.toString()
 				 ,FunctionList.mangaEdenSourceGetListManga.toString());
 
